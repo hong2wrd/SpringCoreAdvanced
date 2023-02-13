@@ -37,7 +37,7 @@ public class OrderSimpleApiController {
         return all;
     }
 
-    @GetMapping("api/ve/simple-orders")
+    @GetMapping("api/v2/simple-orders")
     public List<SimpleOrderDto> orderV2() {
         //ORDER 2개
         // N + 1 -> 1 + 회원 N + 배송 N
