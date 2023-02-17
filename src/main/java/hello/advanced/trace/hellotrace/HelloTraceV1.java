@@ -1,4 +1,4 @@
-package hello.advanced.hellotrace;
+package hello.advanced.trace.hellotrace;
 
 import hello.advanced.trace.TraceId;
 import hello.advanced.trace.TraceStatus;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class HelloTraceV2 {
+public class HelloTraceV1 {
 
-    private static final String START_PREFIX = "--->";
-    private static final String COMPLETE_PREFIX = "<---";
+    private static final String START_PREFIX = "-->";
+    private static final String COMPLETE_PREFIX = "<--";
     private static final String EX_PREFIX = "<-X-";
 
     public TraceStatus begin(String message) {
@@ -19,16 +19,6 @@ public class HelloTraceV2 {
         log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
         //로그 출력
         return new TraceStatus(traceId, startTimeMs, message);
-    }
-
-    //v2에서 추가
-    public TraceStatus beginSync(TraceId beforeTraceId, String message) {
-//        TraceId traceId = new TraceId();
-        TraceId nextId = beforeTraceId.createNextId();
-        Long startTimeMs = System.currentTimeMillis();
-        log.info("[{}] {}{}", nextId.getId(), addSpace(START_PREFIX, nextId.getLevel()), message);
-        //로그 출력
-        return new TraceStatus(nextId, startTimeMs, message);
     }
     public void end(TraceStatus status) {
         complete(status, null);
