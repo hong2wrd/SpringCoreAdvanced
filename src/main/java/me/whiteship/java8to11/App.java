@@ -1,7 +1,6 @@
 package me.whiteship.java8to11;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -43,6 +42,39 @@ public class App {
         foo1.printNameUpperCase();
 
         Foo1.printAnything();
+
+        //자바8 API의 기본 메소드와 스태틱 메소드
+        List<String> names1 = new ArrayList<>();
+        names1.add("hong");
+        names1.add("whiteship");
+        names1.add("toby");
+        names1.add("foo");
+
+        names1.forEach(System.out::println);
+        System.out.println("==============");
+
+        Spliterator<String> spliterator = names1.spliterator();
+        Spliterator<String> spliterator1 = spliterator.trySplit();
+        while (spliterator.tryAdvance(System.out::println));
+        System.out.println("=================");
+        while (spliterator1.tryAdvance(System.out::println));
+        System.out.println("=================");
+
+        long h = names1.stream().map(String::toUpperCase)
+                .filter(s -> s.startsWith("H"))
+                .count();
+        System.out.println(h);
+        System.out.println("=================");
+
+//        names1.removeIf(s -> s.startsWith("h"));
+//        names1.forEach(System.out::println);
+//        System.out.println("=================");
+
+        names1.sort(String::compareToIgnoreCase);
+        Comparator<String> compareToIgnoreCase = String::compareToIgnoreCase;;
+        names1.sort(compareToIgnoreCase.reversed());
+        names1.forEach(System.out::println);
+
 
     }
 }
