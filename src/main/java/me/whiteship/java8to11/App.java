@@ -35,5 +35,14 @@ public class App {
                 return 0;
             }
         });
+
+
+        //인터페이스 기본 메서드와 스태틱 메서드
+        Foo1 foo1 = new DefaultFoo("hong");
+        foo1.printName();
+        foo1.printNameUpperCase();
+
+        Foo1.printAnything();
+
     }
 }
