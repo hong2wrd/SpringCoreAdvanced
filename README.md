@@ -1,5 +1,3 @@
-# Inflearn 강의
+# 스프링 핵심 원리 고급편(Spring core Advanced)
 
-Branch : SprringCoreAdvanced
-- 스프링 핵심 원리 고급편(Spring core Advanced)
 
