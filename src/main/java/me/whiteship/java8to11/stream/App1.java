@@ -1,6 +1,5 @@
 package me.whiteship.java8to11.stream;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,12 +9,12 @@ import java.util.stream.Stream;
 
 public class App1 {
     public static void main(String[] args) {
-        List<OnlineClass1> springClasses = new ArrayList<>();
-        springClasses.add(new OnlineClass1(1, "spring boot", true));
-        springClasses.add(new OnlineClass1(2, "spring data jpa", true));
-        springClasses.add(new OnlineClass1(3, "spring mvc", false));
-        springClasses.add(new OnlineClass1(4, "spring core", false));
-        springClasses.add(new OnlineClass1(5, "rest api development", false));
+        List<OnlineClass> springClasses = new ArrayList<>();
+        springClasses.add(new OnlineClass(1, "spring boot", true));
+        springClasses.add(new OnlineClass(2, "spring data jpa", true));
+        springClasses.add(new OnlineClass(3, "spring mvc", false));
+        springClasses.add(new OnlineClass(4, "spring core", false));
+        springClasses.add(new OnlineClass(5, "rest api development", false));
 
         System.out.println("spring 으로 시작하는 수업");
         springClasses.stream()
@@ -24,7 +23,7 @@ public class App1 {
 
         System.out.println("close 되지 않은 수업");
         springClasses.stream()
-                .filter(Predicate.not(OnlineClass1::isClosed))
+                .filter(Predicate.not(OnlineClass::isClosed))
                 .forEach(oc -> System.out.println(oc.getId()));
 //                .filter(oc -> !oc.isClosed())
 //                .forEach(oc -> System.out.println(oc.getId()));
@@ -34,12 +33,12 @@ public class App1 {
                 .map(oc -> oc.getTitle())
                 .forEach(System.out::println);
 
-        List<OnlineClass1> javaClasses = new ArrayList<>();
-        javaClasses.add(new OnlineClass1(6, "The Java, Test", true));
-        javaClasses.add(new OnlineClass1(7, "The Java, Code manipulation", true));
-        javaClasses.add(new OnlineClass1(6, "The Java 8 to 11", false));
+        List<OnlineClass> javaClasses = new ArrayList<>();
+        javaClasses.add(new OnlineClass(6, "The Java, Test", true));
+        javaClasses.add(new OnlineClass(7, "The Java, Code manipulation", true));
+        javaClasses.add(new OnlineClass(6, "The Java 8 to 11", false));
 
-        List<List<OnlineClass1>> hongEvents = new ArrayList<>();
+        List<List<OnlineClass>> hongEvents = new ArrayList<>();
         hongEvents.add(springClasses);
         hongEvents.add(javaClasses);
 
@@ -61,7 +60,7 @@ public class App1 {
         System.out.println("스프링 수업 중에 제목에 spring이 들어간 제목만 모아서 List로 만들기");
         springClasses.stream()
                 .filter(oc -> oc.getTitle().contains("spring"))
-                .map(OnlineClass1::getTitle)
+                .map(OnlineClass::getTitle)
                 .collect(Collectors.toList())
                 .forEach(System.out::println);
 
