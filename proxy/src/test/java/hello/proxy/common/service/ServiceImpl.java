@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ServiceImpl implements ServiceInterface{
     @Override
     public void save() {
-        log.info("sava 호출");
+        log.info("save 호출");
     }
 
     @Override
