@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
 public class CallServiceV2Test {
 
     @Autowired
-    CallServiceV1 callServiceV2;
+    CallServiceV2 callServiceV2;
 
     @Test
     public void external() {
